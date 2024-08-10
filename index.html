@@ -25,7 +25,17 @@
     // 🧠 The person also has an `ageGracefully` method, which increases `age` by 1 each time it's called.
     // 🧠 But there's a catch: once `age` reaches 12, the `ageGracefully` method will have no effect.
     class PeterPan {
-
+      constructor (name) {
+        this.name = name;
+        this.age = 0;
+      }
+      ageGracefully () {
+        if (this.age <= 12) {
+          this.age += 1;
+        } else if (this.age > 12) {
+          this.age = 12
+        }
+      }
     }
 
     // 👉 CHALLENGE 2
@@ -38,7 +48,23 @@
     // 🧠 Calling `down` changes the `altitude` prop appropriately and returns the updated `altitude`.
     // 🧠 If calling `down` would cause the plane to go below altitude zero, `altitude` is set to 0 and the string "CRASH!" is returned.
     class AirPlane {
-
+      constructor (desiredModel) {
+        this.model = desiredModel;
+        this.altitude = 0;
+      }
+      up (numOfMeters) {
+        this.altitude += numOfMeters;
+        return this.altitude;
+      }
+      down (numOfMeters) {
+        this.altitude -= numOfMeters;
+        if (this.altitude < 0) {
+          this.altitude = 0;
+          return 'CRASH!';
+        } else {
+          return this.altitude
+        }
+      }
     }
 
     // 👉 CHALLENGE 3
@@ -48,7 +74,29 @@
     // 🧠 The methods work as one might expect, changing the value of `isOn` to the appropriate Boolean.
     // 🧠 The methods also return one of these two strings: "You turned the bulb ON", or "You turned the bulb OFF".
     class Bulb {
+      constructor (){
+      this.isOn = false;
+    }
 
+      turnOff () {
+        this.isOn = false;
+        return "You turned the bulb OFF";
+      }
+
+      turnOn () {
+        this.isOn = true;
+        return "You turned the bulb ON";
+      }
+
+      toggle () {
+        if (this.isOn) {
+          this.isOn = false;
+          return "You turned the bulb OFF";
+        } else {
+          this.isOn = true;
+          return "You turned the bulb ON"; 
+        }
+      }
     }
 
     // 👉 CHALLENGE 4
@@ -66,7 +114,20 @@
     //   minusThree.count() // returns null
     //   minusThree.count() // returns null
     class CountDown {
-
+      constructor (anyNumber) {
+        this.anyNumber = anyNumber;
+      }
+      
+      count () {
+        if (this.anyNumber > 0) {
+          return `${this.anyNumber--}!`
+        } else if (this.anyNumber === 0) {
+          this.anyNumber--
+          return 'Liftoff!'
+        } else {
+          return null
+        }
+      }
     }
 
     // 🧪 TESTS, do not work below this line
